@@ -13,6 +13,10 @@ export const textSecondary: "#5B6857";
 export const textDisabled: "#98A394";
 export const bgPrimary: "#F4F7F0";
 export const bgSecondary: "#E8EEE2";
+export const warningBackground: "#FFF4D8";
+export const dangerBackground: "#FDE8E7";
+export const warningForeground: "#8A5B00";
+export const dangerForeground: "#A4312D";
 export namespace spacing {
     let xs: number;
     let sm: number;
@@ -42,6 +46,10 @@ declare namespace tokens {
     export { textDisabled };
     export { bgPrimary };
     export { bgSecondary };
+    export { warningBackground };
+    export { dangerBackground };
+    export { warningForeground };
+    export { dangerForeground };
     export { spacing };
     export { borderRadius };
 }

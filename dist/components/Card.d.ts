@@ -1,12 +1,13 @@
 /**
  * A surface for one or two-column health summary tiles.
  *
- * @param {{ label: string, children: React.ReactNode, style?: object }} props
+ * @param {{ label: string, children: React.ReactNode, style?: object, variant?: 'default' | 'warning' | 'danger' }} props
  */
-export function Card({ label, children, style }: {
+export function Card({ label, children, style, variant }: {
     label: string;
     children: React.ReactNode;
     style?: object;
+    variant?: "default" | "warning" | "danger";
 }): React.JSX.Element;
 export default Card;
-import React from 'react';
+import React from "react";

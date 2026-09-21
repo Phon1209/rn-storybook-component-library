@@ -1,5 +1,10 @@
 import { mergeConfig } from "vite";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
+
+const svgWebEntry = fileURLToPath(
+  new URL("./react-native-svg.web.js", import.meta.url),
+);
 
 /** @type {import('@storybook/react-vite').StorybookConfig} */
 const config = {
@@ -31,9 +36,16 @@ const config = {
         global: "globalThis",
       },
 
+      optimizeDeps: {
+        exclude: ["react-native-svg"],
+      },
+
       // Keep components written for React Native while rendering them on the web.
       resolve: {
-        alias: [{ find: /^react-native$/, replacement: "react-native-web" }],
+        alias: [
+          { find: /^react-native$/, replacement: "react-native-web" },
+          { find: /^react-native-svg$/, replacement: svgWebEntry },
+        ],
       },
     });
   },
