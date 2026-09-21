@@ -14,6 +14,10 @@ const meta = {
     label: {
       control: "text",
     },
+    variant: {
+      control: "select",
+      options: ["default", "warning", "danger"],
+    },
   },
   decorators: [
     (Story) => (
@@ -45,6 +49,32 @@ export const HeartRate = {
     <Card {...args}>
       <Text style={styles.value}>72</Text>
       <Text style={styles.caption}>BPM · resting</Text>
+    </Card>
+  ),
+};
+
+export const Warning = {
+  args: {
+    label: "Hydration reminder",
+    variant: "warning",
+  },
+  render: (args) => (
+    <Card {...args}>
+      <Text style={styles.value}>2</Text>
+      <Text style={styles.caption}>glasses remaining</Text>
+    </Card>
+  ),
+};
+
+export const Danger = {
+  args: {
+    label: "High heart rate",
+    variant: "danger",
+  },
+  render: (args) => (
+    <Card {...args}>
+      <Text style={styles.value}>124</Text>
+      <Text style={styles.caption}>BPM · check in</Text>
     </Card>
   ),
 };

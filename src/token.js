@@ -3,19 +3,24 @@
  * Moss green anchors the accent palette while the neutral tones keep health
  * data and labels easy to scan.
  */
-export const cardBackground = '#FFFFFF';
-export const cardLabel = '#60705B';
+export const cardBackground = "#FFFFFF";
+export const cardLabel = "#60705B";
 
-export const accentColor1 = '#52734D';
-export const accentColor2 = '#86A47C';
-export const accentColor3 = '#D8E5D1';
+export const accentColor1 = "#52734D";
+export const accentColor2 = "#86A47C";
+export const accentColor3 = "#D8E5D1";
 
-export const textPrimary = '#1E2B1D';
-export const textSecondary = '#5B6857';
-export const textDisabled = '#98A394';
+export const textPrimary = "#1E2B1D";
+export const textSecondary = "#5B6857";
+export const textDisabled = "#98A394";
 
-export const bgPrimary = '#F4F7F0';
-export const bgSecondary = '#E8EEE2';
+export const bgPrimary = "#F4F7F0";
+export const bgSecondary = "#E8EEE2";
+
+export const warningBackground = "#FFF4D8";
+export const dangerBackground = "#FDE8E7";
+export const warningForeground = "#8A5B00";
+export const dangerForeground = "#A4312D";
 
 export const spacing = {
   xs: 4,
@@ -44,6 +49,10 @@ const tokens = {
   textDisabled,
   bgPrimary,
   bgSecondary,
+  warningBackground,
+  dangerBackground,
+  warningForeground,
+  dangerForeground,
   spacing,
   borderRadius,
 };
