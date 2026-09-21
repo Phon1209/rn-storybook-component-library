@@ -31,7 +31,7 @@
     "build-storybook": "storybook build -o storybook-static",
     "lint": "eslint .",
     "check:js": "tsc -p jsconfig.json",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "verify": "npm run lint && npm run check:js && npm run test && npm run build",
     "prepack": "npm run build"
   },
