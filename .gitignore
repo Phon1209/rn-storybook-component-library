@@ -1,0 +1,8 @@
+node_modules/
+dist/
+storybook-static/
+coverage/
+.DS_Store
+*.tgz
+
+# dist/ is intentionally committed. Git installs consume these built files.
