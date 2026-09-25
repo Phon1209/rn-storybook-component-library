@@ -35,26 +35,13 @@ __export(index_exports, {
   ProgressRing: () => ProgressRing,
   Radii: () => Radii,
   Spacing: () => Spacing,
-  accentColor1: () => accentColor1,
-  accentColor2: () => accentColor2,
-  accentColor3: () => accentColor3,
-  bgPrimary: () => bgPrimary,
-  bgSecondary: () => bgSecondary,
-  borderRadius: () => borderRadius,
-  cardBackground: () => cardBackground,
-  cardLabel: () => cardLabel,
+  Typography: () => Typography2,
+  TypographyTokens: () => Typography,
   colors: () => colors,
-  dangerBackground: () => dangerBackground,
-  dangerForeground: () => dangerForeground,
   primitive: () => primitive,
   primitiveSpacing: () => spacing,
   radii: () => radii,
-  spacing: () => spacing2,
-  textDisabled: () => textDisabled,
-  textPrimary: () => textPrimary,
-  textSecondary: () => textSecondary,
-  warningBackground: () => warningBackground,
-  warningForeground: () => warningForeground
+  typography: () => typography
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -236,6 +223,30 @@ var radii = {
 };
 var Radii = radii;
 
+// src/tokens/Typography.ts
+var typography = {
+  variants: {
+    "display-2xl": { fontSize: 72, lineHeight: 90 },
+    "display-xl": { fontSize: 60, lineHeight: 72 },
+    "display-lg": { fontSize: 48, lineHeight: 60 },
+    "display-md": { fontSize: 36, lineHeight: 44 },
+    "display-sm": { fontSize: 30, lineHeight: 38 },
+    "display-xs": { fontSize: 24, lineHeight: 32 },
+    "text-xl": { fontSize: 20, lineHeight: 30 },
+    "text-lg": { fontSize: 18, lineHeight: 28 },
+    "text-md": { fontSize: 16, lineHeight: 24 },
+    "text-sm": { fontSize: 14, lineHeight: 20 },
+    "text-xs": { fontSize: 12, lineHeight: 18 }
+  },
+  weights: {
+    regular: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700"
+  }
+};
+var Typography = typography;
+
 // src/components/Card.jsx
 var import_jsx_runtime = require("react/jsx-runtime");
 function Card({ label, children, style, variant = "default" }) {
@@ -365,32 +376,37 @@ function ProgressRing({
   );
 }
 
-// src/token.js
-var cardBackground = "#FFFFFF";
-var cardLabel = "#60705B";
-var accentColor1 = "#52734D";
-var accentColor2 = "#86A47C";
-var accentColor3 = "#D8E5D1";
-var textPrimary = "#1E2B1D";
-var textSecondary = "#5B6857";
-var textDisabled = "#98A394";
-var bgPrimary = "#F4F7F0";
-var bgSecondary = "#E8EEE2";
-var warningBackground = "#FFF4D8";
-var dangerBackground = "#FDE8E7";
-var warningForeground = "#8A5B00";
-var dangerForeground = "#A4312D";
-var spacing2 = {
-  xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 24,
-  xxl: 32
-};
-var borderRadius = {
-  ...radii
-};
+// src/components/Typography.jsx
+var import_react3 = __toESM(require("react"), 1);
+var import_react_native2 = require("react-native");
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var defaultColor = Color.text.primary900;
+function Typography2({
+  children,
+  variant = "text-md",
+  color = "primary900",
+  weight = "regular",
+  align = "left",
+  style,
+  ...textProps
+}) {
+  const variantStyle = Typography.variants[variant] || Typography.variants["text-md"];
+  const fontWeight = Typography.weights[weight] || Typography.weights.regular;
+  const textColor = Color.text[color] || color || defaultColor;
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+    import_react_native2.Text,
+    {
+      ...textProps,
+      style: [styles2.text, variantStyle, { color: textColor, fontWeight, textAlign: align }, style],
+      children
+    }
+  );
+}
+var styles2 = import_react_native2.StyleSheet.create({
+  text: {
+    color: defaultColor
+  }
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Card,
@@ -399,25 +415,12 @@ var borderRadius = {
   ProgressRing,
   Radii,
   Spacing,
-  accentColor1,
-  accentColor2,
-  accentColor3,
-  bgPrimary,
-  bgSecondary,
-  borderRadius,
-  cardBackground,
-  cardLabel,
+  Typography,
+  TypographyTokens,
   colors,
-  dangerBackground,
-  dangerForeground,
   primitive,
   primitiveSpacing,
   radii,
-  spacing,
-  textDisabled,
-  textPrimary,
-  textSecondary,
-  warningBackground,
-  warningForeground
+  typography
 });
 //# sourceMappingURL=index.cjs.map

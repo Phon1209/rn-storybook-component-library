@@ -7,6 +7,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src/index.js", "src/token.js", "src/tokens/**/*.ts", "src/components/Card.jsx", "src/components/ProgressRing.jsx"],
+  "include": ["src/index.js", "src/token.js", "src/tokens/**/*.ts", "src/components/Card.jsx", "src/components/ProgressRing.jsx", "src/components/Typography.jsx"],
   "exclude": ["src/**/*.stories.jsx", "src/__tests__", "node_modules"]
 }
