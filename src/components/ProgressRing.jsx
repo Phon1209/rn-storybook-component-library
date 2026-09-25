@@ -1,18 +1,13 @@
 import React from 'react';
 import Svg, { Circle } from 'react-native-svg';
 
-import {
-  accentColor1,
-  accentColor2,
-  accentColor3,
-  bgSecondary,
-} from '../token.js';
+import { Color } from '../tokens/index.js';
 
 const MAX_VALUE = 100;
 const ACCENT_COLORS = {
-  accent1: accentColor1,
-  accent2: accentColor2,
-  accent3: accentColor3,
+  accent1: Color.foreground.brandPrimary600,
+  accent2: Color.foreground.successPrimary,
+  accent3: Color.foreground.warningPrimary,
 };
 
 function clampValue(value) {
@@ -35,7 +30,7 @@ export function ProgressRing({
   const circumference = 2 * Math.PI * radius;
   const progress = clampValue(value);
   const dashOffset = circumference * (1 - progress / MAX_VALUE);
-  const color = ACCENT_COLORS[accent] ?? accentColor1;
+  const color = ACCENT_COLORS[accent] ?? ACCENT_COLORS.accent1;
 
   return (
     <Svg
@@ -50,7 +45,7 @@ export function ProgressRing({
         cy={center}
         fill="none"
         r={radius}
-        stroke={bgSecondary}
+        stroke={Color.background.quaternary}
         strokeWidth={strokeWidth}
       />
       <Circle

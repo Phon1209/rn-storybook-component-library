@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { ProgressRing } from './ProgressRing.jsx';
+import { Color, Spacing } from '../tokens/index.js';
 
 const meta = {
   title: 'Components/Progress Ring',
@@ -49,9 +50,9 @@ export const AccentThree = {
 const styles = StyleSheet.create({
   canvas: {
     alignItems: 'center',
-    backgroundColor: '#F4F7F0',
+    backgroundColor: Color.background.secondary,
     justifyContent: 'center',
     minHeight: 240,
-    padding: 24,
+    padding: Spacing[6],
   },
 });

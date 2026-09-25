@@ -1,0 +1,410 @@
+/** Raw palette tokens for direct use in component styles. */
+export declare const colors: {
+    readonly base: {
+        readonly white: "#ffffff";
+        readonly black: "#000000";
+        readonly transparent: "#ffffff";
+    };
+    readonly gray: {
+        readonly lightMode: {
+            readonly 25: "#fcfcfd";
+            readonly 50: "#f9fafb";
+            readonly 100: "#f2f4f7";
+            readonly 200: "#eaecf0";
+            readonly 300: "#d0d5dd";
+            readonly 400: "#98a2b3";
+            readonly 500: "#667085";
+            readonly 600: "#475467";
+            readonly 700: "#344054";
+            readonly 800: "#182230";
+            readonly 900: "#101828";
+            readonly 950: "#0c111d";
+        };
+        readonly darkMode: {
+            readonly 25: "#fafafa";
+            readonly 50: "#f5f5f6";
+            readonly 100: "#f0f1f1";
+            readonly 200: "#ececed";
+            readonly 300: "#cecfd2";
+            readonly 400: "#94969c";
+            readonly 500: "#85888e";
+            readonly 600: "#61646c";
+            readonly 700: "#333741";
+            readonly 800: "#1f242f";
+            readonly 900: "#161b26";
+            readonly 950: "#0c111d";
+        };
+    };
+    readonly brand: {
+        readonly 25: "#fafdf7";
+        readonly 50: "#f5fbee";
+        readonly 100: "#e6f4d7";
+        readonly 200: "#ceeab0";
+        readonly 300: "#acdc79";
+        readonly 400: "#86cb3c";
+        readonly 500: "#669f2a";
+        readonly 600: "#4f7a21";
+        readonly 700: "#3f621a";
+        readonly 800: "#335015";
+        readonly 900: "#2b4212";
+        readonly 950: "#1a280b";
+    };
+    readonly error: {
+        readonly 25: "#fffbfa";
+        readonly 50: "#fef3f2";
+        readonly 100: "#fee4e2";
+        readonly 200: "#fecdca";
+        readonly 300: "#fda29b";
+        readonly 400: "#f97066";
+        readonly 500: "#f04438";
+        readonly 600: "#d92d20";
+        readonly 700: "#b42318";
+        readonly 800: "#912018";
+        readonly 900: "#7a271a";
+        readonly 950: "#55160c";
+    };
+    readonly warning: {
+        readonly 25: "#fffcf5";
+        readonly 50: "#fffaeb";
+        readonly 100: "#fef0c7";
+        readonly 200: "#fedf89";
+        readonly 300: "#fec84b";
+        readonly 400: "#fdb022";
+        readonly 500: "#f79009";
+        readonly 600: "#dc6803";
+        readonly 700: "#b54708";
+        readonly 800: "#93370d";
+        readonly 900: "#7a2e0e";
+        readonly 950: "#4e1d09";
+    };
+    readonly success: {
+        readonly 25: "#f6fef9";
+        readonly 50: "#ecfdf3";
+        readonly 100: "#dcfae6";
+        readonly 200: "#abefc6";
+        readonly 300: "#75e0a7";
+        readonly 400: "#47cd89";
+        readonly 500: "#17b26a";
+        readonly 600: "#079455";
+        readonly 700: "#067647";
+        readonly 800: "#085d3a";
+        readonly 900: "#074d31";
+        readonly 950: "#053321";
+    };
+    readonly blue: {
+        readonly 25: "#f5faff";
+        readonly 50: "#eff8ff";
+        readonly 100: "#d1e9ff";
+        readonly 200: "#b2ddff";
+        readonly 300: "#84caff";
+        readonly 400: "#53b1fd";
+        readonly 500: "#2e90fa";
+        readonly 600: "#1570ef";
+        readonly 700: "#175cd3";
+        readonly 800: "#1849a9";
+        readonly 900: "#194185";
+        readonly 950: "#102a56";
+    };
+    readonly green: {
+        readonly 50: "#edfcf2";
+        readonly 100: "#d3f8df";
+        readonly 200: "#aaf0c4";
+        readonly 300: "#73e2a3";
+        readonly 400: "#3ccb7f";
+        readonly 500: "#16b364";
+        readonly 600: "#099250";
+        readonly 700: "#087443";
+        readonly 800: "#095c37";
+        readonly 900: "#084c2e";
+        readonly 950: "#052e1c";
+    };
+    readonly moss: {
+        readonly 25: "#fafdf7";
+        readonly 50: "#f5fbee";
+        readonly 100: "#e6f4d7";
+        readonly 200: "#ceeab0";
+        readonly 300: "#acdc79";
+        readonly 400: "#86cb3c";
+        readonly 500: "#669f2a";
+        readonly 600: "#4f7a21";
+        readonly 700: "#3f621a";
+        readonly 800: "#335015";
+        readonly 900: "#2b4212";
+        readonly 950: "#1a280b";
+    };
+};
+/**
+ * Semantic and component tokens, resolved from `primitive` rather than CSS
+ * variable references so they work in React Native styles.
+ */
+export declare const Color: {
+    readonly primitive: {
+        readonly base: {
+            readonly white: "#ffffff";
+            readonly black: "#000000";
+            readonly transparent: "#ffffff";
+        };
+        readonly gray: {
+            readonly lightMode: {
+                readonly 25: "#fcfcfd";
+                readonly 50: "#f9fafb";
+                readonly 100: "#f2f4f7";
+                readonly 200: "#eaecf0";
+                readonly 300: "#d0d5dd";
+                readonly 400: "#98a2b3";
+                readonly 500: "#667085";
+                readonly 600: "#475467";
+                readonly 700: "#344054";
+                readonly 800: "#182230";
+                readonly 900: "#101828";
+                readonly 950: "#0c111d";
+            };
+            readonly darkMode: {
+                readonly 25: "#fafafa";
+                readonly 50: "#f5f5f6";
+                readonly 100: "#f0f1f1";
+                readonly 200: "#ececed";
+                readonly 300: "#cecfd2";
+                readonly 400: "#94969c";
+                readonly 500: "#85888e";
+                readonly 600: "#61646c";
+                readonly 700: "#333741";
+                readonly 800: "#1f242f";
+                readonly 900: "#161b26";
+                readonly 950: "#0c111d";
+            };
+        };
+        readonly brand: {
+            readonly 25: "#fafdf7";
+            readonly 50: "#f5fbee";
+            readonly 100: "#e6f4d7";
+            readonly 200: "#ceeab0";
+            readonly 300: "#acdc79";
+            readonly 400: "#86cb3c";
+            readonly 500: "#669f2a";
+            readonly 600: "#4f7a21";
+            readonly 700: "#3f621a";
+            readonly 800: "#335015";
+            readonly 900: "#2b4212";
+            readonly 950: "#1a280b";
+        };
+        readonly error: {
+            readonly 25: "#fffbfa";
+            readonly 50: "#fef3f2";
+            readonly 100: "#fee4e2";
+            readonly 200: "#fecdca";
+            readonly 300: "#fda29b";
+            readonly 400: "#f97066";
+            readonly 500: "#f04438";
+            readonly 600: "#d92d20";
+            readonly 700: "#b42318";
+            readonly 800: "#912018";
+            readonly 900: "#7a271a";
+            readonly 950: "#55160c";
+        };
+        readonly warning: {
+            readonly 25: "#fffcf5";
+            readonly 50: "#fffaeb";
+            readonly 100: "#fef0c7";
+            readonly 200: "#fedf89";
+            readonly 300: "#fec84b";
+            readonly 400: "#fdb022";
+            readonly 500: "#f79009";
+            readonly 600: "#dc6803";
+            readonly 700: "#b54708";
+            readonly 800: "#93370d";
+            readonly 900: "#7a2e0e";
+            readonly 950: "#4e1d09";
+        };
+        readonly success: {
+            readonly 25: "#f6fef9";
+            readonly 50: "#ecfdf3";
+            readonly 100: "#dcfae6";
+            readonly 200: "#abefc6";
+            readonly 300: "#75e0a7";
+            readonly 400: "#47cd89";
+            readonly 500: "#17b26a";
+            readonly 600: "#079455";
+            readonly 700: "#067647";
+            readonly 800: "#085d3a";
+            readonly 900: "#074d31";
+            readonly 950: "#053321";
+        };
+        readonly blue: {
+            readonly 25: "#f5faff";
+            readonly 50: "#eff8ff";
+            readonly 100: "#d1e9ff";
+            readonly 200: "#b2ddff";
+            readonly 300: "#84caff";
+            readonly 400: "#53b1fd";
+            readonly 500: "#2e90fa";
+            readonly 600: "#1570ef";
+            readonly 700: "#175cd3";
+            readonly 800: "#1849a9";
+            readonly 900: "#194185";
+            readonly 950: "#102a56";
+        };
+        readonly green: {
+            readonly 50: "#edfcf2";
+            readonly 100: "#d3f8df";
+            readonly 200: "#aaf0c4";
+            readonly 300: "#73e2a3";
+            readonly 400: "#3ccb7f";
+            readonly 500: "#16b364";
+            readonly 600: "#099250";
+            readonly 700: "#087443";
+            readonly 800: "#095c37";
+            readonly 900: "#084c2e";
+            readonly 950: "#052e1c";
+        };
+        readonly moss: {
+            readonly 25: "#fafdf7";
+            readonly 50: "#f5fbee";
+            readonly 100: "#e6f4d7";
+            readonly 200: "#ceeab0";
+            readonly 300: "#acdc79";
+            readonly 400: "#86cb3c";
+            readonly 500: "#669f2a";
+            readonly 600: "#4f7a21";
+            readonly 700: "#3f621a";
+            readonly 800: "#335015";
+            readonly 900: "#2b4212";
+            readonly 950: "#1a280b";
+        };
+    };
+    readonly text: {
+        readonly primary900: "#101828";
+        readonly secondary700: "#344054";
+        readonly tertiary600: "#475467";
+        readonly disabled: "#667085";
+        readonly placeholder: "#667085";
+        readonly placeholderSubtle: "#d0d5dd";
+        readonly secondaryHover: "#182230";
+        readonly tertiaryHover: "#344054";
+        readonly quaternary500: "#667085";
+        readonly white: "#ffffff";
+        readonly errorPrimary600: "#d92d20";
+        readonly warningPrimary600: "#dc6803";
+        readonly successPrimary600: "#079455";
+        readonly brandSecondary700: "#3f621a";
+        readonly brandTertiary600: "#4f7a21";
+        readonly brandPrimary900: "#2b4212";
+        readonly primaryOnBrand: "#ffffff";
+        readonly secondaryOnBrand: "#ceeab0";
+        readonly tertiaryOnBrand: "#ceeab0";
+    };
+    readonly border: {
+        readonly primary: "#d0d5dd";
+        readonly secondary: "#eaecf0";
+        readonly tertiary: "#f2f4f7";
+        readonly disabled: "#d0d5dd";
+        readonly disabledSubtle: "#eaecf0";
+        readonly brand: "#acdc79";
+        readonly brandSolid: "#4f7a21";
+        readonly brandSolidAlt: "#4f7a21";
+        readonly error: "#fda29b";
+        readonly errorSolid: "#d92d20";
+    };
+    readonly background: {
+        readonly primary: "#ffffff";
+        readonly primaryAlt: "#ffffff";
+        readonly primaryHover: "#f9fafb";
+        readonly primarySolid: "#0c111d";
+        readonly secondary: "#f9fafb";
+        readonly secondaryAlt: "#f9fafb";
+        readonly secondaryHover: "#f2f4f7";
+        readonly secondarySubtle: "#fcfcfd";
+        readonly tertiary: "#f2f4f7";
+        readonly quaternary: "#eaecf0";
+        readonly active: "#f9fafb";
+        readonly disabled: "#f2f4f7";
+        readonly disabledSubtle: "#f9fafb";
+        readonly overlay: "#0c111d";
+        readonly brandPrimary: "#f5fbee";
+        readonly brandPrimaryAlt: "#f5fbee";
+        readonly brandSecondary: "#e6f4d7";
+        readonly brandSolid: "#4f7a21";
+        readonly brandSolidHover: "#3f621a";
+        readonly brandSection: "#335015";
+        readonly brandSectionSubtle: "#3f621a";
+        readonly errorPrimary: "#fef3f2";
+        readonly errorSecondary: "#fee4e2";
+        readonly errorSolid: "#d92d20";
+        readonly warningPrimary: "#fffaeb";
+        readonly warningSecondary: "#fef0c7";
+        readonly warningSolid: "#dc6803";
+        readonly successPrimary: "#ecfdf3";
+        readonly successSecondary: "#dcfae6";
+        readonly successSolid: "#079455";
+    };
+    readonly foreground: {
+        readonly white: "#ffffff";
+        readonly primary900: "#101828";
+        readonly secondary700: "#344054";
+        readonly secondaryHover: "#182230";
+        readonly tertiary600: "#475467";
+        readonly tertiaryHover: "#344054";
+        readonly quaternary500: "#667085";
+        readonly quaternaryHover: "#475467";
+        readonly quinary400: "#98a2b3";
+        readonly quinaryHover: "#667085";
+        readonly senary300: "#d0d5dd";
+        readonly disabled: "#98a2b3";
+        readonly disabledSubtle: "#d0d5dd";
+        readonly brandPrimary600: "#4f7a21";
+        readonly brandPrimaryAlt: "#4f7a21";
+        readonly brandSecondary500: "#669f2a";
+        readonly errorPrimary: "#d92d20";
+        readonly errorSecondary: "#f04438";
+        readonly warningPrimary: "#dc6803";
+        readonly warningSecondary: "#f79009";
+        readonly successPrimary: "#079455";
+        readonly successSecondary: "#17b26a";
+    };
+    readonly component: {
+        readonly button: {
+            readonly primary: {
+                readonly background: "#4f7a21";
+                readonly backgroundHover: "#3f621a";
+                readonly foreground: "#ffffff";
+                readonly border: "#4f7a21";
+                readonly borderHover: "#3f621a";
+            };
+            readonly secondary: {
+                readonly background: "#ffffff";
+                readonly backgroundHover: "#f9fafb";
+                readonly foreground: "#344054";
+                readonly foregroundHover: "#182230";
+                readonly border: "#d0d5dd";
+                readonly borderHover: "#d0d5dd";
+            };
+            readonly secondaryColor: {
+                readonly background: "#ffffff";
+                readonly backgroundHover: "#f5fbee";
+                readonly foreground: "#3f621a";
+                readonly foregroundHover: "#335015";
+                readonly border: "#acdc79";
+                readonly borderHover: "#acdc79";
+            };
+            readonly primaryError: {
+                readonly background: "#d92d20";
+                readonly backgroundHover: "#b42318";
+                readonly foreground: "#ffffff";
+                readonly border: "#d92d20";
+                readonly borderHover: "#b42318";
+            };
+            readonly secondaryError: {
+                readonly background: "#ffffff";
+                readonly backgroundHover: "#fef3f2";
+                readonly foreground: "#b42318";
+                readonly foregroundHover: "#912018";
+                readonly border: "#fda29b";
+                readonly borderHover: "#fda29b";
+            };
+        };
+        readonly alpha: {
+            readonly white: "#ffffff";
+            readonly black: "#000000";
+        };
+    };
+};

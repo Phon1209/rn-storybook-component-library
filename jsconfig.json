@@ -9,6 +9,6 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.js", "src/**/*.jsx"],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts"],
   "exclude": ["node_modules", "dist", "storybook-static"]
 }

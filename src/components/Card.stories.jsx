@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import { Card } from "./Card.jsx";
-import { accentColor1, textPrimary } from "../token.js";
+import { Color, Spacing } from "../tokens/index.js";
 
 const meta = {
   title: "Components/Card",
@@ -81,7 +81,7 @@ export const Danger = {
 
 const styles = StyleSheet.create({
   canvas: {
-    backgroundColor: "#F4F7F0",
+    backgroundColor: Color.background.secondary,
     minHeight: 240,
     padding: 24,
   },
@@ -89,13 +89,13 @@ const styles = StyleSheet.create({
     width: 280,
   },
   value: {
-    color: textPrimary,
+    color: Color.text.primary900,
     fontSize: 36,
     fontWeight: "700",
   },
   caption: {
-    color: accentColor1,
+    color: Color.foreground.brandPrimary600,
     fontSize: 14,
-    marginTop: 4,
+    marginTop: Spacing[1],
   },
 });

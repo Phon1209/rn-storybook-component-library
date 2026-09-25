@@ -1,8 +1,4 @@
-/**
- * Shared visual tokens for the health-tracking card grid.
- * Moss green anchors the accent palette while the neutral tones keep health
- * data and labels easy to scan.
- */
+/** Legacy aliases retained for existing component consumers. */
 export const cardBackground: "#FFFFFF";
 export const cardLabel: "#60705B";
 export const accentColor1: "#52734D";
@@ -25,15 +21,13 @@ export namespace spacing {
     let xl: number;
     let xxl: number;
 }
-export namespace borderRadius {
-    let sm_1: number;
-    export { sm_1 as sm };
-    let md_1: number;
-    export { md_1 as md };
-    let lg_1: number;
-    export { lg_1 as lg };
-    export let pill: number;
-}
+export const borderRadius: {
+    none: 0;
+    sm: 8;
+    md: 12;
+    lg: 16;
+    pill: 999;
+};
 export default tokens;
 declare namespace tokens {
     export { cardBackground };
