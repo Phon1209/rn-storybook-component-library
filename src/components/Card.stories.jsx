@@ -33,12 +33,15 @@ const meta = {
 export default meta;
 
 export const Default = {
-  render: (args) => (
+  args: {
+    variant: "default"
+  },
+  render:(args) => (
     <Card {...args}>
       <Text style={styles.value}>8,420</Text>
       <Text style={styles.caption}>steps today</Text>
     </Card>
-  ),
+  )
 };
 
 export const HeartRate = {
@@ -99,3 +102,14 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
+
+export const Sleep = {
+  args: {
+    label: "Sleep",
+    variant: "default"
+  },
+  render:args => (<Card {...args}>
+    <Text style={styles.value}>72</Text>
+    <Text style={styles.caption}>BPM · resting</Text>
+  </Card>)
+};
