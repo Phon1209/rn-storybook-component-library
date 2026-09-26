@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { Color, Radii, Spacing } from "../tokens/index.js";
+import { Typography } from "./Typography.jsx";
 
 /**
  * A surface for one or two-column health summary tiles.
@@ -11,7 +12,13 @@ import { Color, Radii, Spacing } from "../tokens/index.js";
 export function Card({ label, children, style, variant = "default" }) {
   return (
     <View style={[styles.card, variantStyles[variant], style]}>
-      <Text style={[styles.label, labelVariantStyles[variant]]}>{label}</Text>
+      <Typography
+        variant="text-xs"
+        color={labelColors[variant] || labelColors.default}
+        weight="semibold"
+      >
+        {label.toUpperCase()}
+      </Typography>
       <View style={styles.content}>{children}</View>
     </View>
   );
@@ -36,30 +43,10 @@ const styles = StyleSheet.create({
   success: {
     backgroundColor: Color.background.successPrimary,
   },
-  label: {
-    color: Color.text.tertiary600,
-    fontSize: 12,
-    fontWeight: "600",
-    left: Spacing[4],
-    letterSpacing: 0.4,
-    position: "absolute",
-    textTransform: "uppercase",
-    top: Spacing[4],
-  },
-  warningLabel: {
-    color: Color.text.warningPrimary600,
-  },
-  dangerLabel: {
-    color: Color.text.errorPrimary600,
-  },
-  successLabel: {
-    color: Color.text.successPrimary600,
-  },
   content: {
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
-    paddingTop: Spacing[4],
   },
 });
 
@@ -69,10 +56,11 @@ const variantStyles = {
   success: styles.success,
 };
 
-const labelVariantStyles = {
-  warning: styles.warningLabel,
-  danger: styles.dangerLabel,
-  success: styles.successLabel,
+const labelColors = {
+  default: "tertiary600",
+  warning: "warningPrimary600",
+  danger: "errorPrimary600",
+  success: "successPrimary600",
 };
 
 export default Card;
