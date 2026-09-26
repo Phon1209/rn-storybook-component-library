@@ -1,6 +1,6 @@
 // src/components/Card.jsx
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React2 from "react";
+import { StyleSheet as StyleSheet2, View } from "react-native";
 
 // src/tokens/Primitive.ts
 var primitive = {
@@ -200,15 +200,55 @@ var typography = {
 };
 var Typography = typography;
 
-// src/components/Card.jsx
-import { jsx, jsxs } from "react/jsx-runtime";
-function Card({ label, children, style, variant = "default" }) {
-  return /* @__PURE__ */ jsxs(View, { style: [styles.card, variantStyles[variant], style], children: [
-    /* @__PURE__ */ jsx(Text, { style: [styles.label, labelVariantStyles[variant]], children: label }),
-    /* @__PURE__ */ jsx(View, { style: styles.content, children })
-  ] });
+// src/components/Typography.jsx
+import React from "react";
+import { StyleSheet, Text } from "react-native";
+import { jsx } from "react/jsx-runtime";
+var defaultColor = Color.text.primary900;
+function Typography2({
+  children,
+  variant = "text-md",
+  color = "primary900",
+  weight = "regular",
+  align = "left",
+  style,
+  ...textProps
+}) {
+  const variantStyle = Typography.variants[variant] || Typography.variants["text-md"];
+  const fontWeight = Typography.weights[weight] || Typography.weights.regular;
+  const textColor = Color.text[color] || color || defaultColor;
+  return /* @__PURE__ */ jsx(
+    Text,
+    {
+      ...textProps,
+      style: [styles.text, variantStyle, { color: textColor, fontWeight, textAlign: align }, style],
+      children
+    }
+  );
 }
 var styles = StyleSheet.create({
+  text: {
+    color: defaultColor
+  }
+});
+
+// src/components/Card.jsx
+import { jsx as jsx2, jsxs } from "react/jsx-runtime";
+function Card({ label, children, style, variant = "default" }) {
+  return /* @__PURE__ */ jsxs(View, { style: [styles2.card, variantStyles[variant], style], children: [
+    /* @__PURE__ */ jsx2(
+      Typography2,
+      {
+        variant: "text-xs",
+        color: labelColors[variant] || labelColors.default,
+        weight: "semibold",
+        children: label.toUpperCase()
+      }
+    ),
+    /* @__PURE__ */ jsx2(View, { style: styles2.content, children })
+  ] });
+}
+var styles2 = StyleSheet2.create({
   card: {
     backgroundColor: Color.background.primary,
     borderRadius: Radii.lg,
@@ -227,47 +267,28 @@ var styles = StyleSheet.create({
   success: {
     backgroundColor: Color.background.successPrimary
   },
-  label: {
-    color: Color.text.tertiary600,
-    fontSize: 12,
-    fontWeight: "600",
-    left: Spacing[4],
-    letterSpacing: 0.4,
-    position: "absolute",
-    textTransform: "uppercase",
-    top: Spacing[4]
-  },
-  warningLabel: {
-    color: Color.text.warningPrimary600
-  },
-  dangerLabel: {
-    color: Color.text.errorPrimary600
-  },
-  successLabel: {
-    color: Color.text.successPrimary600
-  },
   content: {
     alignItems: "center",
     flex: 1,
-    justifyContent: "center",
-    paddingTop: Spacing[4]
+    justifyContent: "center"
   }
 });
 var variantStyles = {
-  warning: styles.warning,
-  danger: styles.danger,
-  success: styles.success
+  warning: styles2.warning,
+  danger: styles2.danger,
+  success: styles2.success
 };
-var labelVariantStyles = {
-  warning: styles.warningLabel,
-  danger: styles.dangerLabel,
-  success: styles.successLabel
+var labelColors = {
+  default: "tertiary600",
+  warning: "warningPrimary600",
+  danger: "errorPrimary600",
+  success: "successPrimary600"
 };
 
 // src/components/ProgressRing.jsx
-import React2 from "react";
+import React3 from "react";
 import Svg, { Circle } from "react-native-svg";
-import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
 var MAX_VALUE = 100;
 var ACCENT_COLORS = {
   accent1: Color.foreground.brandPrimary600,
@@ -298,7 +319,7 @@ function ProgressRing({
       viewBox: `0 0 ${size} ${size}`,
       width: size,
       children: [
-        /* @__PURE__ */ jsx2(
+        /* @__PURE__ */ jsx3(
           Circle,
           {
             cx: center,
@@ -309,7 +330,7 @@ function ProgressRing({
             strokeWidth
           }
         ),
-        /* @__PURE__ */ jsx2(
+        /* @__PURE__ */ jsx3(
           Circle,
           {
             cx: center,
@@ -329,35 +350,81 @@ function ProgressRing({
   );
 }
 
-// src/components/Typography.jsx
-import React3 from "react";
-import { StyleSheet as StyleSheet2, Text as Text2 } from "react-native";
-import { jsx as jsx3 } from "react/jsx-runtime";
-var defaultColor = Color.text.primary900;
-function Typography2({
-  children,
-  variant = "text-md",
-  color = "primary900",
-  weight = "regular",
-  align = "left",
-  style,
-  ...textProps
-}) {
-  const variantStyle = Typography.variants[variant] || Typography.variants["text-md"];
-  const fontWeight = Typography.weights[weight] || Typography.weights.regular;
-  const textColor = Color.text[color] || color || defaultColor;
-  return /* @__PURE__ */ jsx3(
-    Text2,
-    {
-      ...textProps,
-      style: [styles2.text, variantStyle, { color: textColor, fontWeight, textAlign: align }, style],
-      children
-    }
-  );
+// src/components/SleepTracker.jsx
+import React4 from "react";
+import { StyleSheet as StyleSheet3, View as View2 } from "react-native";
+import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+function progressColor(percent) {
+  if (percent <= 30) return Color.foreground.errorPrimary;
+  if (percent <= 70) return Color.foreground.warningPrimary;
+  return Color.foreground.brandPrimary600;
 }
-var styles2 = StyleSheet2.create({
-  text: {
-    color: defaultColor
+function SleepTracker({ hoursSlept, goalHours = 8, style }) {
+  const clamped = Math.min(Math.max(Number(hoursSlept) || 0, 0), goalHours);
+  const percent = goalHours > 0 ? clamped / goalHours * 100 : 0;
+  const met = hoursSlept >= goalHours;
+  const fillColor = progressColor(percent);
+  return /* @__PURE__ */ jsxs3(View2, { style: [styles3.card, style], children: [
+    /* @__PURE__ */ jsx4(Typography2, { style: styles3.label, children: "Sleep" }),
+    /* @__PURE__ */ jsxs3(View2, { style: styles3.row, children: [
+      /* @__PURE__ */ jsx4(Typography2, { style: styles3.value, children: hoursSlept }),
+      /* @__PURE__ */ jsx4(Typography2, { style: styles3.unit, children: "hrs" })
+    ] }),
+    /* @__PURE__ */ jsxs3(Typography2, { style: styles3.caption, children: [
+      "Goal: ",
+      goalHours,
+      " hrs ",
+      met ? "\xB7 goal met" : ""
+    ] }),
+    /* @__PURE__ */ jsx4(View2, { style: styles3.track, children: /* @__PURE__ */ jsx4(View2, { style: [styles3.fill, { backgroundColor: fillColor, width: `${percent}%` }] }) })
+  ] });
+}
+var styles3 = StyleSheet3.create({
+  card: {
+    backgroundColor: Color.background.primary,
+    borderRadius: Radii.lg,
+    padding: Spacing[4],
+    minWidth: 220
+  },
+  label: {
+    color: Color.text.tertiary600,
+    fontSize: 12,
+    fontWeight: "600",
+    letterSpacing: 0.4,
+    textTransform: "uppercase",
+    marginBottom: Spacing[2]
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "flex-end"
+  },
+  value: {
+    color: Color.text.primary900,
+    fontSize: 36,
+    fontWeight: "700"
+  },
+  unit: {
+    color: Color.text.secondary700,
+    fontSize: 16,
+    marginLeft: Spacing[1],
+    marginBottom: 4
+  },
+  caption: {
+    color: Color.text.secondary700,
+    fontSize: 13,
+    marginTop: Spacing[1],
+    marginBottom: Spacing[3]
+  },
+  track: {
+    height: 8,
+    borderRadius: Radii.pill,
+    backgroundColor: Color.background.quaternary,
+    overflow: "hidden"
+  },
+  fill: {
+    height: "100%",
+    borderRadius: Radii.pill,
+    backgroundColor: Color.foreground.brandPrimary600
   }
 });
 export {
@@ -366,6 +433,7 @@ export {
   Primitive,
   ProgressRing,
   Radii,
+  SleepTracker,
   Spacing,
   Typography2 as Typography,
   Typography as TypographyTokens,

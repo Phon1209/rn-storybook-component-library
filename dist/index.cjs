@@ -34,6 +34,7 @@ __export(index_exports, {
   Primitive: () => Primitive,
   ProgressRing: () => ProgressRing,
   Radii: () => Radii,
+  SleepTracker: () => SleepTracker,
   Spacing: () => Spacing,
   Typography: () => Typography2,
   TypographyTokens: () => Typography,
@@ -46,8 +47,8 @@ __export(index_exports, {
 module.exports = __toCommonJS(index_exports);
 
 // src/components/Card.jsx
-var import_react = __toESM(require("react"), 1);
-var import_react_native = require("react-native");
+var import_react2 = __toESM(require("react"), 1);
+var import_react_native2 = require("react-native");
 
 // src/tokens/Primitive.ts
 var primitive = {
@@ -247,15 +248,55 @@ var typography = {
 };
 var Typography = typography;
 
-// src/components/Card.jsx
+// src/components/Typography.jsx
+var import_react = __toESM(require("react"), 1);
+var import_react_native = require("react-native");
 var import_jsx_runtime = require("react/jsx-runtime");
-function Card({ label, children, style, variant = "default" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react_native.View, { style: [styles.card, variantStyles[variant], style], children: [
-    /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react_native.Text, { style: [styles.label, labelVariantStyles[variant]], children: label }),
-    /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react_native.View, { style: styles.content, children })
-  ] });
+var defaultColor = Color.text.primary900;
+function Typography2({
+  children,
+  variant = "text-md",
+  color = "primary900",
+  weight = "regular",
+  align = "left",
+  style,
+  ...textProps
+}) {
+  const variantStyle = Typography.variants[variant] || Typography.variants["text-md"];
+  const fontWeight = Typography.weights[weight] || Typography.weights.regular;
+  const textColor = Color.text[color] || color || defaultColor;
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+    import_react_native.Text,
+    {
+      ...textProps,
+      style: [styles.text, variantStyle, { color: textColor, fontWeight, textAlign: align }, style],
+      children
+    }
+  );
 }
 var styles = import_react_native.StyleSheet.create({
+  text: {
+    color: defaultColor
+  }
+});
+
+// src/components/Card.jsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+function Card({ label, children, style, variant = "default" }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_native2.View, { style: [styles2.card, variantStyles[variant], style], children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      Typography2,
+      {
+        variant: "text-xs",
+        color: labelColors[variant] || labelColors.default,
+        weight: "semibold",
+        children: label.toUpperCase()
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_native2.View, { style: styles2.content, children })
+  ] });
+}
+var styles2 = import_react_native2.StyleSheet.create({
   card: {
     backgroundColor: Color.background.primary,
     borderRadius: Radii.lg,
@@ -274,47 +315,28 @@ var styles = import_react_native.StyleSheet.create({
   success: {
     backgroundColor: Color.background.successPrimary
   },
-  label: {
-    color: Color.text.tertiary600,
-    fontSize: 12,
-    fontWeight: "600",
-    left: Spacing[4],
-    letterSpacing: 0.4,
-    position: "absolute",
-    textTransform: "uppercase",
-    top: Spacing[4]
-  },
-  warningLabel: {
-    color: Color.text.warningPrimary600
-  },
-  dangerLabel: {
-    color: Color.text.errorPrimary600
-  },
-  successLabel: {
-    color: Color.text.successPrimary600
-  },
   content: {
     alignItems: "center",
     flex: 1,
-    justifyContent: "center",
-    paddingTop: Spacing[4]
+    justifyContent: "center"
   }
 });
 var variantStyles = {
-  warning: styles.warning,
-  danger: styles.danger,
-  success: styles.success
+  warning: styles2.warning,
+  danger: styles2.danger,
+  success: styles2.success
 };
-var labelVariantStyles = {
-  warning: styles.warningLabel,
-  danger: styles.dangerLabel,
-  success: styles.successLabel
+var labelColors = {
+  default: "tertiary600",
+  warning: "warningPrimary600",
+  danger: "errorPrimary600",
+  success: "successPrimary600"
 };
 
 // src/components/ProgressRing.jsx
-var import_react2 = __toESM(require("react"), 1);
+var import_react3 = __toESM(require("react"), 1);
 var import_react_native_svg = __toESM(require("react-native-svg"), 1);
-var import_jsx_runtime2 = require("react/jsx-runtime");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 var MAX_VALUE = 100;
 var ACCENT_COLORS = {
   accent1: Color.foreground.brandPrimary600,
@@ -336,7 +358,7 @@ function ProgressRing({
   const progress = clampValue(value);
   const dashOffset = circumference * (1 - progress / MAX_VALUE);
   const color = ACCENT_COLORS[accent] ?? ACCENT_COLORS.accent1;
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
     import_react_native_svg.default,
     {
       accessibilityLabel: `${progress}% progress`,
@@ -345,7 +367,7 @@ function ProgressRing({
       viewBox: `0 0 ${size} ${size}`,
       width: size,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           import_react_native_svg.Circle,
           {
             cx: center,
@@ -356,7 +378,7 @@ function ProgressRing({
             strokeWidth
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           import_react_native_svg.Circle,
           {
             cx: center,
@@ -376,35 +398,81 @@ function ProgressRing({
   );
 }
 
-// src/components/Typography.jsx
-var import_react3 = __toESM(require("react"), 1);
-var import_react_native2 = require("react-native");
-var import_jsx_runtime3 = require("react/jsx-runtime");
-var defaultColor = Color.text.primary900;
-function Typography2({
-  children,
-  variant = "text-md",
-  color = "primary900",
-  weight = "regular",
-  align = "left",
-  style,
-  ...textProps
-}) {
-  const variantStyle = Typography.variants[variant] || Typography.variants["text-md"];
-  const fontWeight = Typography.weights[weight] || Typography.weights.regular;
-  const textColor = Color.text[color] || color || defaultColor;
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-    import_react_native2.Text,
-    {
-      ...textProps,
-      style: [styles2.text, variantStyle, { color: textColor, fontWeight, textAlign: align }, style],
-      children
-    }
-  );
+// src/components/SleepTracker.jsx
+var import_react4 = __toESM(require("react"), 1);
+var import_react_native3 = require("react-native");
+var import_jsx_runtime4 = require("react/jsx-runtime");
+function progressColor(percent) {
+  if (percent <= 30) return Color.foreground.errorPrimary;
+  if (percent <= 70) return Color.foreground.warningPrimary;
+  return Color.foreground.brandPrimary600;
 }
-var styles2 = import_react_native2.StyleSheet.create({
-  text: {
-    color: defaultColor
+function SleepTracker({ hoursSlept, goalHours = 8, style }) {
+  const clamped = Math.min(Math.max(Number(hoursSlept) || 0, 0), goalHours);
+  const percent = goalHours > 0 ? clamped / goalHours * 100 : 0;
+  const met = hoursSlept >= goalHours;
+  const fillColor = progressColor(percent);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_react_native3.View, { style: [styles3.card, style], children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Typography2, { style: styles3.label, children: "Sleep" }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_react_native3.View, { style: styles3.row, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Typography2, { style: styles3.value, children: hoursSlept }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Typography2, { style: styles3.unit, children: "hrs" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Typography2, { style: styles3.caption, children: [
+      "Goal: ",
+      goalHours,
+      " hrs ",
+      met ? "\xB7 goal met" : ""
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_native3.View, { style: styles3.track, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_native3.View, { style: [styles3.fill, { backgroundColor: fillColor, width: `${percent}%` }] }) })
+  ] });
+}
+var styles3 = import_react_native3.StyleSheet.create({
+  card: {
+    backgroundColor: Color.background.primary,
+    borderRadius: Radii.lg,
+    padding: Spacing[4],
+    minWidth: 220
+  },
+  label: {
+    color: Color.text.tertiary600,
+    fontSize: 12,
+    fontWeight: "600",
+    letterSpacing: 0.4,
+    textTransform: "uppercase",
+    marginBottom: Spacing[2]
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "flex-end"
+  },
+  value: {
+    color: Color.text.primary900,
+    fontSize: 36,
+    fontWeight: "700"
+  },
+  unit: {
+    color: Color.text.secondary700,
+    fontSize: 16,
+    marginLeft: Spacing[1],
+    marginBottom: 4
+  },
+  caption: {
+    color: Color.text.secondary700,
+    fontSize: 13,
+    marginTop: Spacing[1],
+    marginBottom: Spacing[3]
+  },
+  track: {
+    height: 8,
+    borderRadius: Radii.pill,
+    backgroundColor: Color.background.quaternary,
+    overflow: "hidden"
+  },
+  fill: {
+    height: "100%",
+    borderRadius: Radii.pill,
+    backgroundColor: Color.foreground.brandPrimary600
   }
 });
 // Annotate the CommonJS export names for ESM import in node:
@@ -414,6 +482,7 @@ var styles2 = import_react_native2.StyleSheet.create({
   Primitive,
   ProgressRing,
   Radii,
+  SleepTracker,
   Spacing,
   Typography,
   TypographyTokens,
