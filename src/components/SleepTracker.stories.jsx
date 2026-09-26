@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import { SleepTracker } from './SleepTracker.jsx';
+import { SleepTracker } from "./SleepTracker.jsx";
 
 const meta = {
-  title: 'Components/Sleep Tracker',
+  title: "Components/Sleep Tracker",
   component: SleepTracker,
   args: {
     hoursSlept: 6.5,
@@ -12,10 +12,10 @@ const meta = {
   },
   argTypes: {
     hoursSlept: {
-      control: { type: 'range', min: 0, max: 12, step: 0.5 },
+      control: { type: "range", min: 0, max: 12, step: 0.5 },
     },
     goalHours: {
-      control: { type: 'range', min: 1, max: 12, step: 0.5 },
+      control: { type: "range", min: 1, max: 12, step: 0.5 },
     },
   },
   decorators: [
@@ -41,10 +41,11 @@ export const ShortNight = {
 
 const styles = StyleSheet.create({
   canvas: {
-    alignItems: 'center',
-    backgroundColor: '#F4F7F0',
-    justifyContent: 'center',
+    alignItems: "center",
+    backgroundColor: "#F4F7F0",
+    justifyContent: "center",
     minHeight: 240,
     padding: 24,
   },
 });
+
