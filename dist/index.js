@@ -285,10 +285,112 @@ var labelColors = {
   success: "successPrimary600"
 };
 
-// src/components/ProgressRing.jsx
+// src/components/Trail/Card.jsx
 import React3 from "react";
-import Svg, { Circle } from "react-native-svg";
+import { Image, StyleSheet as StyleSheet3, View as View2 } from "react-native";
+import Svg, { Path } from "react-native-svg";
 import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+var difficultyTokens = {
+  easy: { background: Color.background.successSolid, foreground: Color.text.primaryOnBrand },
+  medium: { background: Color.background.warningSolid, foreground: Color.text.primary900 },
+  moderate: { background: Color.background.warningSolid, foreground: Color.text.primary900 },
+  hard: { background: Color.background.errorSolid, foreground: Color.text.primaryOnBrand }
+};
+function Card2({
+  name,
+  imageUrl,
+  difficulty,
+  trailDistance,
+  estimateHikeTime,
+  saved = false,
+  style
+}) {
+  const normalizedDifficulty = difficulty.toLowerCase();
+  const difficultyStyle = difficultyTokens[normalizedDifficulty] || difficultyTokens.easy;
+  return /* @__PURE__ */ jsxs2(View2, { style: [styles3.card, style], children: [
+    /* @__PURE__ */ jsx3(
+      Image,
+      {
+        accessibilityLabel: `${name} trail`,
+        source: typeof imageUrl === "string" ? { uri: imageUrl } : imageUrl,
+        style: styles3.image
+      }
+    ),
+    /* @__PURE__ */ jsxs2(View2, { style: styles3.content, children: [
+      /* @__PURE__ */ jsxs2(View2, { style: styles3.topRow, children: [
+        /* @__PURE__ */ jsx3(Typography2, { variant: "text-lg", color: "primary900", weight: "semibold", style: styles3.name, children: name }),
+        /* @__PURE__ */ jsx3(Star, { filled: saved })
+      ] }),
+      /* @__PURE__ */ jsx3(View2, { style: [styles3.badge, { backgroundColor: difficultyStyle.background }], children: /* @__PURE__ */ jsx3(Typography2, { variant: "text-md", color: difficultyStyle.foreground, weight: "medium", children: difficulty }) }),
+      /* @__PURE__ */ jsxs2(View2, { style: styles3.details, children: [
+        /* @__PURE__ */ jsx3(Typography2, { variant: "text-md", color: "secondary700", weight: "medium", children: trailDistance }),
+        /* @__PURE__ */ jsx3(Typography2, { variant: "text-md", color: "secondary700", weight: "medium", children: "\xB7" }),
+        /* @__PURE__ */ jsx3(Typography2, { variant: "text-md", color: "secondary700", weight: "medium", children: estimateHikeTime })
+      ] })
+    ] })
+  ] });
+}
+function Star({ filled }) {
+  return /* @__PURE__ */ jsx3(
+    Svg,
+    {
+      accessibilityLabel: filled ? "Saved trail" : "Unsaved trail",
+      fill: filled ? Color.foreground.warningPrimary : "none",
+      height: 28,
+      viewBox: "0 0 24 24",
+      width: 28,
+      stroke: Color.foreground.warningPrimary,
+      strokeWidth: 1.8,
+      children: /* @__PURE__ */ jsx3(Path, { d: "m12 2.5 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.53l-5.88 3.09 1.12-6.55-4.76-4.64 6.58-.96L12 2.5Z" })
+    }
+  );
+}
+var styles3 = StyleSheet3.create({
+  card: {
+    alignItems: "stretch",
+    backgroundColor: Color.background.primary,
+    borderColor: Color.border.secondary,
+    borderRadius: Radii.lg,
+    borderWidth: 1,
+    flexDirection: "row",
+    overflow: "hidden",
+    padding: Spacing[3]
+  },
+  image: {
+    aspectRatio: 1,
+    borderRadius: Radii.md,
+    height: 120,
+    resizeMode: "cover"
+  },
+  content: {
+    flex: 1,
+    justifyContent: "space-between",
+    marginLeft: Spacing[3]
+  },
+  topRow: {
+    alignItems: "flex-start",
+    flexDirection: "row",
+    gap: Spacing[2],
+    justifyContent: "space-between"
+  },
+  name: { flex: 1 },
+  badge: {
+    alignSelf: "flex-start",
+    borderRadius: Radii.pill,
+    paddingHorizontal: Spacing[3],
+    paddingVertical: Spacing[1]
+  },
+  details: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing[2]
+  }
+});
+
+// src/components/ProgressRing.jsx
+import React4 from "react";
+import Svg2, { Circle } from "react-native-svg";
+import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
 var MAX_VALUE = 100;
 var ACCENT_COLORS = {
   accent1: Color.foreground.brandPrimary600,
@@ -310,8 +412,8 @@ function ProgressRing({
   const progress = clampValue(value);
   const dashOffset = circumference * (1 - progress / MAX_VALUE);
   const color = ACCENT_COLORS[accent] ?? ACCENT_COLORS.accent1;
-  return /* @__PURE__ */ jsxs2(
-    Svg,
+  return /* @__PURE__ */ jsxs3(
+    Svg2,
     {
       accessibilityLabel: `${progress}% progress`,
       accessibilityRole: "image",
@@ -319,7 +421,7 @@ function ProgressRing({
       viewBox: `0 0 ${size} ${size}`,
       width: size,
       children: [
-        /* @__PURE__ */ jsx3(
+        /* @__PURE__ */ jsx4(
           Circle,
           {
             cx: center,
@@ -330,7 +432,7 @@ function ProgressRing({
             strokeWidth
           }
         ),
-        /* @__PURE__ */ jsx3(
+        /* @__PURE__ */ jsx4(
           Circle,
           {
             cx: center,
@@ -351,9 +453,9 @@ function ProgressRing({
 }
 
 // src/components/SleepTracker.jsx
-import React4 from "react";
-import { StyleSheet as StyleSheet3, View as View2 } from "react-native";
-import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+import React5 from "react";
+import { StyleSheet as StyleSheet4, View as View3 } from "react-native";
+import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
 function progressColor(percent) {
   if (percent <= 30) return Color.foreground.errorPrimary;
   if (percent <= 70) return Color.foreground.warningPrimary;
@@ -364,22 +466,22 @@ function SleepTracker({ hoursSlept, goalHours = 8, style }) {
   const percent = goalHours > 0 ? clamped / goalHours * 100 : 0;
   const met = hoursSlept >= goalHours;
   const fillColor = progressColor(percent);
-  return /* @__PURE__ */ jsxs3(View2, { style: [styles3.card, style], children: [
-    /* @__PURE__ */ jsx4(Typography2, { style: styles3.label, children: "Sleep" }),
-    /* @__PURE__ */ jsxs3(View2, { style: styles3.row, children: [
-      /* @__PURE__ */ jsx4(Typography2, { style: styles3.value, children: hoursSlept }),
-      /* @__PURE__ */ jsx4(Typography2, { style: styles3.unit, children: "hrs" })
+  return /* @__PURE__ */ jsxs4(View3, { style: [styles4.card, style], children: [
+    /* @__PURE__ */ jsx5(Typography2, { style: styles4.label, children: "Sleep" }),
+    /* @__PURE__ */ jsxs4(View3, { style: styles4.row, children: [
+      /* @__PURE__ */ jsx5(Typography2, { style: styles4.value, children: hoursSlept }),
+      /* @__PURE__ */ jsx5(Typography2, { style: styles4.unit, children: "hrs" })
     ] }),
-    /* @__PURE__ */ jsxs3(Typography2, { style: styles3.caption, children: [
+    /* @__PURE__ */ jsxs4(Typography2, { style: styles4.caption, children: [
       "Goal: ",
       goalHours,
       " hrs ",
       met ? "\xB7 goal met" : ""
     ] }),
-    /* @__PURE__ */ jsx4(View2, { style: styles3.track, children: /* @__PURE__ */ jsx4(View2, { style: [styles3.fill, { backgroundColor: fillColor, width: `${percent}%` }] }) })
+    /* @__PURE__ */ jsx5(View3, { style: styles4.track, children: /* @__PURE__ */ jsx5(View3, { style: [styles4.fill, { backgroundColor: fillColor, width: `${percent}%` }] }) })
   ] });
 }
-var styles3 = StyleSheet3.create({
+var styles4 = StyleSheet4.create({
   card: {
     backgroundColor: Color.background.primary,
     borderRadius: Radii.lg,
@@ -435,6 +537,7 @@ export {
   Radii,
   SleepTracker,
   Spacing,
+  Card2 as TrailCard,
   Typography2 as Typography,
   Typography as TypographyTokens,
   colors,

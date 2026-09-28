@@ -4,6 +4,10 @@ export function Circle(props) {
   return React.createElement('circle', props);
 }
 
+export function Path(props) {
+  return React.createElement('path', props);
+}
+
 export default function Svg({
   accessibilityLabel,
   accessibilityRole,
